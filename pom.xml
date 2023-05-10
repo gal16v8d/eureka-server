@@ -5,41 +5,34 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>3.0.6</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gsdd</groupId>
 	<artifactId>eureka-server</artifactId>
 	<version>2.0.1</version>
 	<name>eureka-server</name>
 	<description>Demo project for Spring Boot eureka server</description>
-
 	<properties>
 		<java.version>17</java.version>
-
 		<mvn.jacoco.plugin.version>0.8.8</mvn.jacoco.plugin.version>
-		<mvn.failsafe.plugin.version>3.0.0-M5</mvn.failsafe.plugin.version>
-		<mvn.surefire.plugin.version>3.0.0-M5</mvn.surefire.plugin.version>
-		<mvn.spotless.plugin.version>2.22.1</mvn.spotless.plugin.version>
-		<mvn.checkstyle.plugin.version>3.1.2</mvn.checkstyle.plugin.version>
-		<mvn.dependency-check.plugin.version>7.1.0</mvn.dependency-check.plugin.version>
-
+		<mvn.failsafe.plugin.version>3.0.0-M8</mvn.failsafe.plugin.version>
+		<mvn.surefire.plugin.version>3.0.0-M8</mvn.surefire.plugin.version>
+		<mvn.spotless.plugin.version>2.33.0</mvn.spotless.plugin.version>
+		<mvn.checkstyle.plugin.version>3.2.1</mvn.checkstyle.plugin.version>
+		<mvn.dependency-check.plugin.version>8.0.2</mvn.dependency-check.plugin.version>
 		<!-- If true skips UT test execution -->
 		<skip.unit.tests>false</skip.unit.tests>
 		<!-- If true skips IT test execution -->
 		<skip.integration.tests>true</skip.integration.tests>
-
 		<checkstyle.version>10.1</checkstyle.version>
-
-		<spring-cloud.version>2022.0.0</spring-cloud.version>
+		<spring-cloud.version>2022.0.2</spring-cloud.version>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -52,7 +45,6 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -64,7 +56,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -82,18 +73,16 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
 			<!-- Used for unit tests -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${mvn.surefire.plugin.version}</version><!--$NO-MVN-MAN-VER$-->
+				<version>${mvn.surefire.plugin.version}</version> <!--$NO-MVN-MAN-VER$-->
 				<configuration>
 					<skipTests>${skip.unit.tests}</skipTests>
 					<!-- Excludes integration tests when unit tests are run. -->
@@ -102,11 +91,10 @@
 					</excludes>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${mvn.failsafe.plugin.version}</version><!--$NO-MVN-MAN-VER$-->
+				<version>${mvn.failsafe.plugin.version}</version> <!--$NO-MVN-MAN-VER$-->
 				<executions>
 					<execution>
 						<id>integration-tests</id>
@@ -120,7 +108,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -132,7 +119,6 @@
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
-
 					<execution>
 						<id>post-unit-test</id>
 						<phase>test</phase>
@@ -140,7 +126,6 @@
 							<goal>report</goal>
 						</goals>
 					</execution>
-
 					<execution>
 						<id>pre-integration-test</id>
 						<phase>pre-integration-test</phase>
@@ -148,7 +133,6 @@
 							<goal>prepare-agent</goal>
 						</goals>
 					</execution>
-
 					<execution>
 						<id>post-integration-test</id>
 						<phase>post-integration-test</phase>
@@ -156,7 +140,6 @@
 							<goal>report</goal>
 						</goals>
 					</execution>
-
 					<execution>
 						<id>jacoco-check</id>
 						<goals>
@@ -188,7 +171,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>com.diffplug.spotless</groupId>
 				<artifactId>spotless-maven-plugin</artifactId>
@@ -212,9 +194,9 @@
 					<!-- define a language-specific format -->
 					<java>
 						<eclipse>
-                            <version>4.21.0</version>
-                            <file>${project.basedir}/config/eclipse-google-formatter.xml</file>
-                        </eclipse>
+							<version>4.21.0</version>
+							<file>${project.basedir}/config/eclipse-google-formatter.xml</file>
+						</eclipse>
 						<importOrder>
 							<file>${project.basedir}/config/formatter.importorder</file>
 						</importOrder>
@@ -230,7 +212,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -250,7 +231,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<plugin>
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
@@ -270,5 +250,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
