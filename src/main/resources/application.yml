@@ -1,6 +1,3 @@
-server:
-  port: 8761
-
 eureka:
   instance:
     hostname: localhost
@@ -10,12 +7,15 @@ eureka:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
-spring:
-  output:
-    ansi:
-      enabled: always
-
 management:
   tracing:
     sampling:
       probability: 1.0
+
+server:
+  port: 8761
+
+spring:
+  output:
+    ansi:
+      enabled: always
